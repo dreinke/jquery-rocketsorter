@@ -116,8 +116,6 @@
                 }
 
                 result = result.concat(rows[rowsLength - 1]);
-
-                console.log(result);
                 return result;
             } else {
                 return rows;
