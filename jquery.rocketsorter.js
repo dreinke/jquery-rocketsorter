@@ -108,14 +108,14 @@
 
                 for (i = 1; i < rowsLength; i++) {
                     if (equalRows[0].cells[param.coll].innerHTML == rows[i].cells[param.coll].innerHTML) {
-                        equalRows.push(rows[i]);
+                        equalRows = equalRows.concat(rows[i]);
                     } else {
                         result = result.concat(equalRows.length > 1? this.sortRows(equalRows, parameters) : equalRows);
                         equalRows = [rows[i]];
                     }
                 }
 
-                result = result.concat(equalRows);
+                result = result.concat(equalRows.length > 1? this.sortRows(equalRows, parameters) : equalRows);
                 return result;
             } else {
                 return rows;
