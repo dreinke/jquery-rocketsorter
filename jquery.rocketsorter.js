@@ -106,16 +106,16 @@
                 var equalRows = [rows[0]],
                     result = [];
 
-                for (i = 0; i < rowsLength - 1; i++) {
-                    if (rows[i].cells[param.coll].innerHTML == rows[i + 1].cells[param.coll].innerHTML) {
-                        equalRows.push(rows[i + 1]);
+                for (i = 1; i < rowsLength; i++) {
+                    if (equalRows[0].cells[param.coll].innerHTML == rows[i].cells[param.coll].innerHTML) {
+                        equalRows.push(rows[i]);
                     } else {
-                        result = result.concat(this.sortRows(equalRows, parameters));
-                        equalRows = [rows[i + 1]];
+                        result = result.concat(equalRows.length > 1? this.sortRows(equalRows, parameters) : equalRows);
+                        equalRows = [rows[i]];
                     }
                 }
 
-                result = result.concat(rows[rowsLength - 1]);
+                result = result.concat(equalRows);
                 return result;
             } else {
                 return rows;
